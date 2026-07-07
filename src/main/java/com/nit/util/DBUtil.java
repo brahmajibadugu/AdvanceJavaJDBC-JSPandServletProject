@@ -5,15 +5,20 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBUtil {
-	private final static String url = "jdbc:mysql://localhost:3306/emp_db_55";
-	private final static String u_name = "root";
-	private final static String paswd = "root";
-	
-	public static Connection getConnection() throws ClassNotFoundException, SQLException
-	{
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		Connection conn=DriverManager.getConnection(url, u_name, paswd);
-		return conn;
-	}
 
+    public static Connection getConnection() throws ClassNotFoundException, SQLException {
+
+        Class.forName("com.mysql.cj.jdbc.Driver");
+
+        String host = System.getenv("MYSQLHOST");
+        String port = System.getenv("MYSQLPORT");
+        String database = System.getenv("MYSQLDATABASE");
+        String username = System.getenv("MYSQLUSER");
+        String password = System.getenv("MYSQLPASSWORD");
+
+        String url = "jdbc:mysql://" + host + ":" + port + "/" + database
+                + "?useSSL=false&allowPublicKeyRetrieval=true";
+
+        return DriverManager.getConnection(url, username, password);
+    }
 }
