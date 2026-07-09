@@ -1,6 +1,6 @@
 <%@ page import="java.util.*, com.nit.dto.Employee" %>
 
-<a href="add-employee.jsp">Add New Employee</a><br><br>
+<a href="add-employee.jsp">Add New Employee</a> | <a href="list">View All Employees</a> <br><br>
 
 <table border="1">
 <tr>
